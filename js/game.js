@@ -26,7 +26,7 @@ const config = {
       debug: true
     }
   },
-  // set background color to grey
+  // set background color to pink
   backgroundColor: 0xD73178,
   scale: {
     mode: Phaser.Scale.FIT,
@@ -44,4 +44,4 @@ game.scene.add('splashScene', splashScene)
 game.scene.add('titleScene', titleScene)
 
 // start title
-game.scene.start('splashScene')
+game.scene.start('titleScene')
