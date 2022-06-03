@@ -29,9 +29,9 @@ class SplashScene extends Phaser.Scene {
     this.splashSceneBackgroundImage.y = 1080 / 2
   }
 
-  // making the splash scene image stay on the screen for 3 seconds
+  // making the splash scene image stay on the screen for 6 seconds
   update (time, delta) {
-    if (time > 3000) {
+    if (time > 6000) {
     this.scene.switch('titleScene')
     }
   }    
