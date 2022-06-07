@@ -26,7 +26,7 @@ class GameScene extends Phaser.Scene {
     //images
     this.load.image('starBackground', 'assets/starBackground.png')
     this.load.image('ship', 'assets/spaceShip.png')
-    
+    this.load.image('missile', 'assets/missile.png')
   }
 
   //show the game scene images to the user and setting where the images should be on the screen
@@ -35,13 +35,17 @@ class GameScene extends Phaser.Scene {
     this.background.setOrigin(0, 0)
 
     this.ship = this.physics.add.sprite(1920 / 2, 1080 - 100, 'ship')
+
+    //creating a group for the missile image
+    this.missileGroup = this.physics.add.group()
   }
 
-  //checking user input 60 times per second and exacuting what they have clicked. If they have moved left or right
+  //checking user input 60 times per second and exacuting what they have clicked. If they have moved left or right are shot a missile
   update (time, delta) {
 
     const keyLeftObj = this.input.keyboard.addKey('LEFT')
     const keyRightObj = this.input.keyboard.addKey('RIGHT')
+    const keySpaceObj = this.input.keyboard.addKey('Space')
 
     if (keyLeftObj.isDown === true) {
       this.ship.x -= 15
