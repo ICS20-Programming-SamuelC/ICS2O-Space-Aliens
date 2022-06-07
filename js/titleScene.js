@@ -36,7 +36,11 @@ class TitleScene extends Phaser.Scene {
     this.titleSceneText = this.add.text(1920 / 2, (1080 / 2) + 350, 'Space Aliens', this.titleSceneTextStyle).setOrigin(0.5)
   }
 
+  //setting the time for the menu scene to be displayed
   update (time, delta) {
+    if (time > 9000) {
+      this.scene.switch('menuScene')
+    }
   }
 }
 
