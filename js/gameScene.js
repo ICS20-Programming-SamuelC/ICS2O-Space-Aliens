@@ -13,6 +13,7 @@ class GameScene extends Phaser.Scene {
 
     this.background = null
     this.ship = null
+    this.fireMissile = false
   }
 
   init (data) {
@@ -62,8 +63,17 @@ class GameScene extends Phaser.Scene {
     }
 
     if (keySpaceObj.isDown === true) {
-      const aNewMissile = this.physics.add.sprite(this.ship.x, this.ship.y, 'missile')
-      this.missileGroup.add(aNewMissile)
+      if (this.fireMissile === false) {
+        //firing the missiles fro the space ship
+        this.fireMissile = true
+        const aNewMissile = this.physics.add.sprite(this.ship.x, this.ship.y, 'missile')
+        this.missileGroup.add(aNewMissile)
+      }
+    }
+
+    //code to reset bolean when the space bar is up
+    if (keySpaceObj.isUp === true) {
+      this.fireMissile = false
     }
   }
 }
