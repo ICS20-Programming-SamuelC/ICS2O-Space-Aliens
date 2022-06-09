@@ -8,6 +8,14 @@
 
 //assigning the game scene background variable to null and assigning the ship image variable to null
 class GameScene extends Phaser.Scene {
+
+  //creating aliens and making them apaer randomly
+  createAlien () {
+    const alienXLocation = Math.floor(Math.random() * 1920) + 1 
+    const anAlien = this.physics.add.sprite(alienXLocation, 100, 'alien')
+    this.alienGroup.add(anAlien)
+  }
+  
   constructor () {
     super({ key: 'gameScene' })
 
@@ -42,6 +50,10 @@ class GameScene extends Phaser.Scene {
 
     //creating a group for the missile image
     this.missileGroup = this.physics.add.group()
+
+    //creating a group for the alien image
+    this.alienGroup = this.add.group()
+    this.createAlien()
   }
 
   //checking user input 60 times per second and exacuting what they have clicked. If they have moved left or right are shot a missile
