@@ -58,6 +58,12 @@ class GameScene extends Phaser.Scene {
     //creating a group for the alien image
     this.alienGroup = this.add.group()
     this.createAlien()
+
+    //collisions between missiles and aliens so that aliens die when they are hit by missiles
+    this.physics.add.collider(this.missileGroup, this.alienGroup, function (missileCollide, alienCollide) {
+      alienCollide.destroy()
+      missileCollide.destroy()
+    }.bind(this))
   }
 
   //checking user input 60 times per second and exacuting what they have clicked. If they have moved left or right are shot a missile
