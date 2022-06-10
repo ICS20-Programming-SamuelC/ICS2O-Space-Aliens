@@ -41,8 +41,9 @@ class GameScene extends Phaser.Scene {
     this.load.image('ship', 'assets/spaceShip.png')
     this.load.image('missile', 'assets/missile.png')
     this.load.image('alien', 'assets/alien.png')
-    //setting the sound for the missiles
+    //setting the sound for the missiles and explosion
     this.load.audio('laser', 'assets/laser1.wav')
+    this.load.audio('explosion', 'assets/barrelExploding.wav')
   }
 
   //show the game scene images to the user and setting where the images should be on the screen
@@ -63,6 +64,7 @@ class GameScene extends Phaser.Scene {
     this.physics.add.collider(this.missileGroup, this.alienGroup, function (missileCollide, alienCollide) {
       alienCollide.destroy()
       missileCollide.destroy()
+      this.sound.play('explosion')
       this.createAlien()
       this.createAlien()
     }.bind(this))
