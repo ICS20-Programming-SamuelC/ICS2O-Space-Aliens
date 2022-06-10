@@ -26,8 +26,8 @@ const config = {
   physics: {
     default: 'arcade',
     arcade: {
-      // set to true to see the physics
-      debug: true
+      // set to false
+      debug: false
     }
   },
   // set background color to pink
