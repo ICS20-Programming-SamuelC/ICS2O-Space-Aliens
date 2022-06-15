@@ -13,6 +13,7 @@ class MenuScene extends Phaser.Scene {
 
     this.menuSceneBackgroundImage = null
     this.startButton = null
+    this.gameOverTextStyle = { font: '35px Arial', fill: '#ff0000', align: 'center'}
   }
 
   init (data) {
@@ -36,6 +37,8 @@ class MenuScene extends Phaser.Scene {
     //making the button interactive so that when you press on it it start the game
     this.startButton.setInteractive({ useHandCursor: true })
     this.startButton.on('pointerdown', () => this.clickButton())
+
+    this.add.text(1920 / 2, 1080 / 12, 'Shoot the aliens. Use the arrows to move right and left. Use the space bar to shoot. You die when you get hit by the aliens.', this.gameOverTextStyle).setOrigin(0.5)
   }
 
   //code for the clickButton function

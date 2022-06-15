@@ -90,10 +90,25 @@ class GameScene extends Phaser.Scene {
       this.gameOverText.setInteractive({ useHandCursor: true})
       this.gameOverText.on('pointerdown', () => this.scene.start('gameScene'))
     }.bind(this))
+      this.alienGroup.children.each(function (item) {
+      if ((item.x < 0) || (item.y < 0) || (item.y > 1080)) {
+        item.x = 2000
+        const alienYCoordinate = Math.floor(Math.random() * 1080) + 1
+        item.y = alienYCoordinate
+      }
+    })
   }
 
   //checking user input 60 times per second and exacuting what they have clicked. If they have moved left or right are shot a missile
   update (time, delta) {
+
+  this.alienGroup.children.each(function (item) {
+    if (item.y > 1080) {
+      item.y = -100
+      const alienXCoordinate = Math.floor(Math.random() * 1080) + 1
+      item.x = alienXCoordinate
+    }
+  })
 
     const keyLeftObj = this.input.keyboard.addKey('LEFT')
     const keyRightObj = this.input.keyboard.addKey('RIGHT')
@@ -136,5 +151,6 @@ class GameScene extends Phaser.Scene {
     })
   }
 }
+
 
 export default GameScene
